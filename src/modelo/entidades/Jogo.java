@@ -402,7 +402,7 @@ public class Jogo {
             		System.out.println();
             	}
         		
-        		System.out.printf( "Você avançou %d casas e agora está em: %s", qt, jogadorDaVez.getPosicao() );
+        		System.out.printf( "Você avançou %d casas e agora está em: %s\n", qt, jogadorDaVez.getPosicao() );
         	}
         	else {
         		String comando_ = String.format( "[1] Voltar %d casas", qt );
@@ -410,7 +410,7 @@ public class Jogo {
         		System.out.println();
         		
         		tabuleiro.voltar(jogadorDaVez, qt);
-        		System.out.printf( "Você voltou %d casas e agora está em: %s", qt, jogadorDaVez.getPosicao() );
+        		System.out.printf( "Você voltou %d casas e agora está em: %s\n", qt, jogadorDaVez.getPosicao() );
         	}
         	
         	interagirDeNovo = true;
@@ -642,7 +642,7 @@ public class Jogo {
     	    		break;
     		}
     		catch(NumberFormatException e) {
-    			System.out.println("O valor precisa ser um número inteiro!");
+    			System.out.print("O valor precisa ser um número inteiro!\n");
     		}
     		
     		System.out.println();
