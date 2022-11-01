@@ -568,7 +568,7 @@ public class Jogo {
     			}
     		}
         }
-        else {	//propriedade de outra pessoa
+        else if(posicao.getDono() != jogadorDaVez) {
         	System.out.printf( "Propriedade de: %s\n", posicao.getDono() );
         	System.out.println();
         	
