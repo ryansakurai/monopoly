@@ -111,21 +111,27 @@ public class Jogo {
                 
                 while(true) {
                 	/* interage com espaço em que caiu */
-                    if (jogadorDaVez.getPosicao() instanceof EspacoDeCarta)
+                    if (jogadorDaVez.getPosicao() instanceof EspacoDeCarta) {
                     	if( interagirComEspacoDeCarta() ) {
                     		System.out.println();
                     		continue;
                     	}
-                    else if (jogadorDaVez.getPosicao() instanceof ImpostoDeRenda)
+                    }
+                    else if (jogadorDaVez.getPosicao() instanceof ImpostoDeRenda) {
                     	interagirComImpostoDeRenda();
-                    else if (jogadorDaVez.getPosicao() instanceof TaxaDeRiqueza)
+                    }
+                    else if (jogadorDaVez.getPosicao() instanceof TaxaDeRiqueza) {
                     	interagirComTaxaDeRiqueza();
-                    else if (jogadorDaVez.getPosicao() instanceof VaParaCadeia)
+                    }
+                    else if (jogadorDaVez.getPosicao() instanceof VaParaCadeia) {
                     	interagirComVaParaCadeia();
-                    else if (jogadorDaVez.getPosicao() instanceof Propriedade)
+                    }
+                    else if (jogadorDaVez.getPosicao() instanceof Propriedade) {
                     	interagirComPropriedade(resultado1+resultado2);
-                    else
+                    }
+                    else {
                     	break;
+                    }
                     
                     System.out.println();
                     break;
