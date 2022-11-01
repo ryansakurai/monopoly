@@ -379,6 +379,8 @@ public class Jogo {
         		System.out.println();
         	}
             
+            System.out.printf( "Você avançou para %s\n", carta.getDestino() );
+            
         	interagirDeNovo = true;
         }
         else if(temp instanceof CartaDeMovimentoRelativo) {
