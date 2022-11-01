@@ -108,6 +108,7 @@ public class Jogo {
             		System.out.println();
                 }
                 System.out.printf( "Você se moveu para: %s\n", jogadorDaVez.getPosicao() );
+                System.out.println();
                 
                 while(true) {
                 	/* interage com espaço em que caiu */
