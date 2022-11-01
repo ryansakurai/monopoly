@@ -110,32 +110,25 @@ public class Jogo {
                 System.out.printf( "Você se moveu para: %s\n", jogadorDaVez.getPosicao() );
                 
                 while(true) {
-                	System.out.println();
-                	
                 	/* interage com espaço em que caiu */
-                    if (jogadorDaVez.getPosicao() instanceof EspacoDeCarta) {
-                    	if( !interagirComEspacoDeCarta() )
-                    		break;
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof ImpostoDeRenda) {
+                    if (jogadorDaVez.getPosicao() instanceof EspacoDeCarta)
+                    	if( interagirComEspacoDeCarta() ) {
+                    		System.out.println();
+                    		continue;
+                    	}
+                    else if (jogadorDaVez.getPosicao() instanceof ImpostoDeRenda)
                     	interagirComImpostoDeRenda();
-                    	break;
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof TaxaDeRiqueza) {
+                    else if (jogadorDaVez.getPosicao() instanceof TaxaDeRiqueza)
                     	interagirComTaxaDeRiqueza();
-                    	break;
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof VaParaCadeia) {
+                    else if (jogadorDaVez.getPosicao() instanceof VaParaCadeia)
                     	interagirComVaParaCadeia();
-                    	break;
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof Propriedade) {
+                    else if (jogadorDaVez.getPosicao() instanceof Propriedade)
                     	interagirComPropriedade(resultado1+resultado2);
+                    else
                     	break;
-                    }
-                    else {
-                    	break;
-                    }
+                    
+                    System.out.println();
+                    break;
                 }
             }
             
