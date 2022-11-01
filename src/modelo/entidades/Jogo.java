@@ -77,65 +77,67 @@ public class Jogo {
                 }     	
             }
             
-        	String comando = "[1] Lançar dados";
-            lerOpcao(comando, 1);
-            System.out.println();
-            
-        	int resultado1 = jogadorDaVez.lancarDado(dados[0]);
-            int resultado2 = jogadorDaVez.lancarDado(dados[1]);
-            System.out.printf( "Os resultados foram: %d e %d\n", resultado1, resultado2 );
-            System.out.println();
-        
-            /* deu dupla */
-            if (resultado1 == resultado2) {
-                if(jogadorDaVez.deuTresDuplas()) {
-                	System.out.print( "Você tirou três duplas seguidas e foi preso\n" );
-                    jogadorDaVez.prender();
-                    tabuleiro.avancarPara(jogadorDaVez, NomeDeEspaco.CADEIA);
-                }
-                else {
-                    System.out.print( "Você tirou uma dupla e jogará de novo na próxima rodada!\n" );
-                    System.out.println();
-                    
-                    i--;	//anula o i++ no final do loop e volta para o jogador atual
-                }
-            }
-            
-            if( !jogadorDaVez.isPreso() ) {	//se o jogador for preso, a rodada termina ali
-            	/* move jogador */
-            	if ( tabuleiro.avancar(jogadorDaVez, resultado1+resultado2) ) {
-            		voltaNoTabuleiro();
-            		System.out.println();
-                }
-                System.out.printf( "Você se moveu para: %s\n", jogadorDaVez.getPosicao() );
+            if( !jogadorDaVez.isPreso() ) {
+            	String comando = "[1] Lançar dados";
+                lerOpcao(comando, 1);
                 System.out.println();
                 
-                while(true) {
-                	/* interage com espaço em que caiu */
-                    if (jogadorDaVez.getPosicao() instanceof EspacoDeCarta) {
-                    	if( interagirComEspacoDeCarta() ) {
-                    		System.out.println();
-                    		continue;
-                    	}
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof ImpostoDeRenda) {
-                    	interagirComImpostoDeRenda();
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof TaxaDeRiqueza) {
-                    	interagirComTaxaDeRiqueza();
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof VaParaCadeia) {
-                    	interagirComVaParaCadeia();
-                    }
-                    else if (jogadorDaVez.getPosicao() instanceof Propriedade) {
-                    	interagirComPropriedade(resultado1+resultado2);
+            	int resultado1 = jogadorDaVez.lancarDado(dados[0]);
+                int resultado2 = jogadorDaVez.lancarDado(dados[1]);
+                System.out.printf( "Os resultados foram: %d e %d\n", resultado1, resultado2 );
+                System.out.println();
+            
+                /* deu dupla */
+                if (resultado1 == resultado2) {
+                    if(jogadorDaVez.deuTresDuplas()) {
+                    	System.out.print( "Você tirou três duplas seguidas e foi preso\n" );
+                        jogadorDaVez.prender();
+                        tabuleiro.avancarPara(jogadorDaVez, NomeDeEspaco.CADEIA);
                     }
                     else {
-                    	break;
+                        System.out.print( "Você tirou uma dupla e jogará de novo na próxima rodada!\n" );
+                        System.out.println();
+                        
+                        i--;	//anula o i++ no final do loop e volta para o jogador atual
                     }
-                    
+                }
+                
+                if( !jogadorDaVez.isPreso() ) {	//se o jogador for preso, a rodada termina ali
+                	/* move jogador */
+                	if ( tabuleiro.avancar(jogadorDaVez, resultado1+resultado2) ) {
+                		voltaNoTabuleiro();
+                		System.out.println();
+                    }
+                    System.out.printf( "Você se moveu para: %s\n", jogadorDaVez.getPosicao() );
                     System.out.println();
-                    break;
+                    
+                    while(true) {
+                    	/* interage com espaço em que caiu */
+                        if (jogadorDaVez.getPosicao() instanceof EspacoDeCarta) {
+                        	if( interagirComEspacoDeCarta() ) {
+                        		System.out.println();
+                        		continue;
+                        	}
+                        }
+                        else if (jogadorDaVez.getPosicao() instanceof ImpostoDeRenda) {
+                        	interagirComImpostoDeRenda();
+                        }
+                        else if (jogadorDaVez.getPosicao() instanceof TaxaDeRiqueza) {
+                        	interagirComTaxaDeRiqueza();
+                        }
+                        else if (jogadorDaVez.getPosicao() instanceof VaParaCadeia) {
+                        	interagirComVaParaCadeia();
+                        }
+                        else if (jogadorDaVez.getPosicao() instanceof Propriedade) {
+                        	interagirComPropriedade(resultado1+resultado2);
+                        }
+                        else {
+                        	break;
+                        }
+                        
+                        System.out.println();
+                        break;
+                    }
                 }
             }
             
@@ -288,7 +290,6 @@ public class Jogo {
             
             int d1 = jogadorDaVez.lancarDado(dados[0]);
             int d2 = jogadorDaVez.lancarDado(dados[1]);
-            System.out.println();
             System.out.printf( "Os resultados foram: %d e %d\n", d1, d2 );
             
             if (d1==d2) {
