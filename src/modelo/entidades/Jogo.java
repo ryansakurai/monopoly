@@ -43,7 +43,7 @@ public class Jogo {
     	
     	for(Jogador x: jogadoresRestantes)
     		tabuleiro.avancarPara(x, NomeDeEspaco.PONTO_PARTIDA);
-        System.out.printf("O jogo começou! Todos os jogadores estão em: %s!\n", NomeDeEspaco.PONTO_PARTIDA);
+        System.out.printf( "O jogo começou! Todos os jogadores estão em: %s\n", NomeDeEspaco.PONTO_PARTIDA );
         System.out.println();
         
         for(int i=0; i<jogadoresRestantes.size(); ) {
@@ -54,7 +54,7 @@ public class Jogo {
             
             /* jogador ganhou */
             if( validarVitoria() ) {
-            	System.out.print("Você venceu, parabéns!!!\n");
+            	System.out.print( "Você venceu o jogo, parabéns!!!\n" );
             	return;
             }
 
@@ -62,12 +62,12 @@ public class Jogo {
             if( jogadorDaVez.isPreso() ) {
                 if( tentarSoltura() ) {
                 	System.out.println();
-                	System.out.print("Você foi solto!\n");
+                	System.out.print( "Você foi solto!\n" );
                 	System.out.println();
                 }
                 else {
                 	System.out.println();
-                	System.out.print("Você não foi solto!\n");
+                	System.out.print( "Você não foi solto\n" );
                 	System.out.println();
                 	
                 	if( jogadorDaVez.faliu() ) {
@@ -83,18 +83,18 @@ public class Jogo {
             
         	int resultado1 = jogadorDaVez.lancarDado(dados[0]);
             int resultado2 = jogadorDaVez.lancarDado(dados[1]);
-            System.out.printf("Os resultados foram: %d e %d\n", resultado1, resultado2);
+            System.out.printf( "Os resultados foram: %d e %d\n", resultado1, resultado2 );
             System.out.println();
         
             /* deu dupla */
             if (resultado1 == resultado2) {
                 if(jogadorDaVez.deuTresDuplas()) {
-                	System.out.print("Você tirou três duplas seguidas e foi preso!\n");
+                	System.out.print( "Você tirou três duplas seguidas e foi preso\n" );
                     jogadorDaVez.prender();
                     tabuleiro.avancarPara(jogadorDaVez, NomeDeEspaco.CADEIA);
                 }
                 else {
-                    System.out.print("Você tirou uma dupla e jogará de novo na próxima rodada!\n");
+                    System.out.print( "Você tirou uma dupla e jogará de novo na próxima rodada!\n" );
                     System.out.println();
                     
                     i--;	//anula o i++ no final do loop e volta para o jogador atual
@@ -142,7 +142,7 @@ public class Jogo {
             /* jogador ganhou */
             if( !jogadorDaVez.faliu() && validarVitoria() ) {
             	System.out.println();
-            	System.out.print("Você venceu, parabéns!!!\n");
+            	System.out.print( "Você venceu, parabéns!!!\n" );
             	return;
             }
 
@@ -172,21 +172,21 @@ public class Jogo {
         for(String x : jogadores)
         	temp.add( new Jogador(x) );
 
-        System.out.print("Hora de decidir a ordem de jogada!\n");
+        System.out.print( "Hora de decidir a ordem de jogada\n" );
         System.out.println();
 
         /* joga dados para decidir ordem de jogada */
         ArrayList<Integer> resultados = new ArrayList<>();
         for (int i=0; i < temp.size(); i++){
             Jogador jogador = temp.get(i);
-            String comando = String.format("Jogador: %s\n", jogador);
+            String comando = String.format( "Jogador: %s\n", jogador );
             comando += "[1] Lançar dados";
             lerOpcao(comando, 1);
             System.out.println();
             
             int result1 = jogador.lancarDado(dados[0]);
             int result2 = jogador.lancarDado(dados[1]);
-            System.out.printf("Os resultados foram: %d e %d\n", result1, result2);
+            System.out.printf( "Os resultados foram: %d e %d\n", result1, result2 );
 
             jogador.limparHistoricoDeDuplas();	//duplas ainda não contam
             
@@ -195,7 +195,7 @@ public class Jogo {
             } 
             else {	//ordenação impossibilita a ordenação completa
             	System.out.println();
-                System.out.print("Outro jogador já tirou o mesmo resultado, jogue novamente!\n");
+                System.out.print( "Outro jogador já tirou o mesmo resultado, jogue novamente!\n" );
                 i--;
             }
             
@@ -210,7 +210,7 @@ public class Jogo {
             jogadoresRestantes.add( temp.get( resultados.indexOf(x) ) );
         }
         
-        System.out.printf("Ordem: %s\n", jogadoresRestantes);
+        System.out.printf( "Ordem: %s\n", jogadoresRestantes );
         System.out.println();
         
         System.out.print("-----------------------------------------\n");
@@ -245,7 +245,7 @@ public class Jogo {
      * 	@return Se o jogador da vez conseguiu sair da cadeia
      */
     private boolean tentarSoltura() {
-    	System.out.print("Você está preso!\n");
+    	System.out.print( "Você está preso\n" );
     	System.out.println();
     	
     	int fianca = ((Cadeia) jogadorDaVez.getPosicao()).getFianca();
@@ -258,7 +258,7 @@ public class Jogo {
     	if(jogadorDaVez.getQtDeRodadasPreso() < 3) {
             if (jogadorDaVez.getQtDeRodadasPreso() < 2) {
             	while(true) {
-            		String comando = String.format("[1] Pagar fiança de $%d\n", fianca);
+            		String comando = String.format( "[1] Pagar fiança de $%d\n", fianca );
                     comando += "[2] Lançar dados";
                     int op = lerOpcao(comando, 2);
                     System.out.println();
@@ -266,12 +266,12 @@ public class Jogo {
                     if (op == 1) {
                         if (jogadorDaVez.getSaldo() >= fianca){
                             banco.receber(jogadorDaVez, fianca);
-                            System.out.print("Você pagou a fiança!\n");
+                            System.out.printf( "Você pagou a fiança com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
                             jogadorDaVez.soltar();
                             return true;
                         }
                         else {
-                            System.out.print("Saldo insuficiente para pagar a fiança\n");
+                            System.out.print( "Saldo insuficiente para pagar a fiança\n" );
                             System.out.println();
                         }
                     }
@@ -289,11 +289,11 @@ public class Jogo {
             int d1 = jogadorDaVez.lancarDado(dados[0]);
             int d2 = jogadorDaVez.lancarDado(dados[1]);
             System.out.println();
-            System.out.printf("Os resultados foram: %d e %d\n", d1, d2);
+            System.out.printf( "Os resultados foram: %d e %d\n", d1, d2 );
             
             if (d1==d2) {
             	System.out.println();
-            	System.out.print("Você tirou uma dupla!\n");
+            	System.out.print( "Você tirou uma dupla!\n" );
                 jogadorDaVez.soltar();
                 return true;
             }
@@ -303,19 +303,19 @@ public class Jogo {
             }
         }
     	else {
-    		String comando = String.format("[1] Pagar fiança de $%d", fianca);
+    		String comando = String.format( "[1] Pagar fiança de $%d", fianca );
     		lerOpcao(comando, 1);
     		System.out.println();
     		
     		banco.receber(jogadorDaVez, 50);
     		
             if( !jogadorDaVez.faliu() ) {
-                System.out.print("Você pagou a fiança!\n");
+                System.out.print( "Você pagou a fiança com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
                 jogadorDaVez.soltar();
                 return true;
             }
             else {
-                System.out.print("Você não pôde pagar a fiança!\n");
+                System.out.print( "Você não pôde pagar a fiança\n" );
                 return false;
             } 
         }
@@ -338,7 +338,7 @@ public class Jogo {
             temp = jogadorDaVez.retirarCarta(deckCofre);
         else	//sorte
             temp = jogadorDaVez.retirarCarta(deckSorte);
-        System.out.printf("Carta retirada: %s\n", temp);
+        System.out.printf( "Carta retirada: %s\n", temp );
         System.out.println();    
         
         boolean interagirDeNovo = false;
@@ -370,7 +370,7 @@ public class Jogo {
         else if(temp instanceof CartaVaParaCadeia) {
         	jogadorDaVez.prender();
             tabuleiro.avancarPara(jogadorDaVez, NomeDeEspaco.CADEIA);
-            System.out.print("Você foi preso\n");
+            System.out.print( "Você foi preso\n" );
         }
         else if(temp instanceof CartaDeMovimentoAbsoluto) {
         	CartaDeMovimentoAbsoluto carta = (CartaDeMovimentoAbsoluto) temp;
@@ -393,7 +393,7 @@ public class Jogo {
         	int qt = Math.abs(carta.getDeslocamento());
         	
         	if(carta.getDeslocamento() > 0) {
-        		String comando_ = String.format("[1] Avançar %d casas", qt);
+        		String comando_ = String.format( "[1] Avançar %d casas", qt );
         		lerOpcao(comando_, 1);
         		System.out.println();
         		
@@ -405,7 +405,7 @@ public class Jogo {
         		System.out.printf( "Você avançou %d casas e agora está em: %s", qt, jogadorDaVez.getPosicao() );
         	}
         	else {
-        		String comando_ = String.format("[1] Voltar %d casas", qt);
+        		String comando_ = String.format( "[1] Voltar %d casas", qt );
         		lerOpcao(comando_, 1);
         		System.out.println();
         		
@@ -427,7 +427,7 @@ public class Jogo {
         		System.out.println();
         	}
             
-        	System.out.printf("Você avançou e agora está em: %s", jogadorDaVez.getPosicao() );
+        	System.out.printf( "Você avançou e agora está em: %s\n", jogadorDaVez.getPosicao() );
         	
         	interagirDeNovo = true;
         }
@@ -451,10 +451,10 @@ public class Jogo {
         
         banco.receber(jogadorDaVez, valor);        
         if ( !jogadorDaVez.faliu() ) {
-        	System.out.printf("Você pagou o imposto de renda de $%d com sucesso!\n", valor);
+        	System.out.printf( "Você pagou o imposto de renda de $%d com sucesso (saldo atualizado: $%d)\n", valor, jogadorDaVez.getSaldo() );
         }
         else {
-        	System.out.printf("Você não pôde pagar o imposto de renda de $%d!\n", valor);
+        	System.out.printf( "Você não pôde pagar o imposto de renda de $%d\n", valor );
         	System.out.println();
             declararFalencia();
         }
@@ -471,10 +471,10 @@ public class Jogo {
     	banco.receber( jogadorDaVez, posicao.getValor() );
     	
         if ( !jogadorDaVez.faliu() ) {
-        	System.out.print("Você pagou a taxa de riqueza com sucesso!\n");
+        	System.out.print( "Você pagou a taxa de riqueza com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
         }
         else {
-        	System.out.print("Você não pôde pagar a taxa de riqueza!\n");
+        	System.out.print( "Você não pôde pagar a taxa de riqueza\n" );
         	System.out.println();
             declararFalencia();
         }
@@ -484,7 +484,7 @@ public class Jogo {
     private void interagirComVaParaCadeia() {
     	jogadorDaVez.prender();
         tabuleiro.avancarPara(jogadorDaVez, NomeDeEspaco.CADEIA);
-        System.out.print("Você foi preso!\n");
+        System.out.print( "Você foi preso\n" );
     }
     
     
@@ -503,19 +503,19 @@ public class Jogo {
                     banco.receber( jogadorDaVez, posicao.getPreco() );
                     jogadorDaVez.adicionarPropriedade(posicao);
                     posicao.setDono(jogadorDaVez);
-                    System.out.print("Você adquiriu a propriedade com sucesso!\n");  
+                    System.out.printf( "Você adquiriu a propriedade com sucesso! (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );  
                 
                     if(posicao instanceof Lote) {
                     	CorDeLote cor = ((Lote) posicao).getCor();
                     	if( validarMonopolio(cor) ) {
                     		jogadorDaVez.adicionarMonopolio(cor);
                     		System.out.println();
-                            System.out.printf("Você conquistou o monopólio dos lotes da cor %s!\n", cor);
+                            System.out.printf( "Você conquistou o monopólio dos lotes da cor %s!\n", cor );
                     	}
                     }
                 } 
                 else {
-                	System.out.print("Seu saldo é insuficiente para adquirir a propriedade!\n");
+                	System.out.print( "Seu saldo é insuficiente para adquirir a propriedade\n" );
                 }
             }             
         }
@@ -523,7 +523,7 @@ public class Jogo {
     		Lote lote = (Lote) posicao;
     		
     		if( !( lote.temCasa() || lote.temHotel() ) ) {
-    			String comando = String.format("Construção de casa disponível no lote, deseja construir?\n");
+    			String comando = "Construção de casa disponível no lote, deseja construir?\n";
             	comando += "[1] Sim\n";
                 comando += "[2] Não";
                 int op = lerOpcao(comando, 2);
@@ -533,10 +533,10 @@ public class Jogo {
                     if (jogadorDaVez.getSaldo() >= lote.getPrecoDeConstrucao()) {
                         banco.receber( jogadorDaVez, lote.getPrecoDeConstrucao() );
                         lote.construirCasa();
-                        System.out.print("Você construiu uma casa com sucesso!\n");  
+                        System.out.printf( "Você construiu uma casa com sucesso! (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );  
                     } 
                     else {
-                    	System.out.print("Seu saldo é insuficiente para construir uma casa!\n");
+                    	System.out.print( "Seu saldo é insuficiente para construir uma casa\n" );
                     }
                 }
     		}
@@ -547,7 +547,7 @@ public class Jogo {
     					todosTemCasa = false;
     			
     			if(todosTemCasa) {
-    				String comando = String.format("Construção de hotel disponível no lote, deseja construir?\n");
+    				String comando = "Construção de hotel disponível no lote, deseja construir?\n";
                 	comando += "[1] Sim\n";
                     comando += "[2] Não";
                     int op = lerOpcao(comando, 2);
@@ -558,10 +558,10 @@ public class Jogo {
                             banco.receber( jogadorDaVez, lote.getPrecoDeConstrucao() );
                             lote.destruirCasa();
                             lote.construirHotel();
-                            System.out.print("Você construiu um hotel com sucesso, e ele substituiu a casa do lote!\n");  
+                            System.out.printf( "Você construiu um hotel com sucesso! Ele substituiu a casa do lote (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );  
                         } 
                         else {
-                        	System.out.print("Seu saldo é insuficiente para construir um hotel!\n");
+                        	System.out.print( "Seu saldo é insuficiente para construir um hotel\n" );
                         }
                     }
     			}
@@ -586,10 +586,10 @@ public class Jogo {
                 
                 banco.transferir(posicao.getDono(), jogadorDaVez, aluguel);
                 if ( !jogadorDaVez.faliu() ) {
-                	System.out.print( "Você pagou o aluguel com sucesso!\n" );
+                	System.out.printf( "Você pagou o aluguel com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
                 }
                 else{
-                	System.out.print( "O aluguel não pode ser pago!\n" );
+                	System.out.print( "O aluguel não pôde ser pago\n" );
                 	System.out.println();
                     declararFalencia();
                     return;
@@ -631,18 +631,18 @@ public class Jogo {
     	
     	while(true) {
     		try {
-    			System.out.printf("[%s] Valor da oferta: ", comprador);
+    			System.out.printf( "[%s] Valor da oferta: ", comprador );
     	    	valor = Integer.parseInt( scanner.nextLine() );
     	    	
     	    	if(valor < 0)
-    	    		System.out.print("O valor não pode ser negativo!\n");
+    	    		System.out.print( "O valor não pode ser negativo!\n" );
     	    	else if(valor > comprador.getSaldo())
-    	    		System.out.print("O valor não pode ser maior que seu saldo!\n");
+    	    		System.out.print( "O valor não pode ser maior que seu saldo!\n" );
     	    	else
     	    		break;
     		}
     		catch(NumberFormatException e) {
-    			System.out.println("Insira um número inteiro!");
+    			System.out.println("O valor precisa ser um número inteiro!");
     		}
     		
     		System.out.println();
@@ -657,31 +657,31 @@ public class Jogo {
         
         if(opcao == 1) {
         	banco.venderPropriedade(prop, comprador, vendedor, valor);
-        	System.out.printf( "[%s] Você vendeu a propriedade com sucesso!\n", vendedor );
+        	System.out.printf( "[%s] Você vendeu a propriedade com sucesso! (saldo atualizado: $%d)\n", vendedor, vendedor.getSaldo() );
         	
         	if(prop instanceof Lote) {
         		CorDeLote cor = ((Lote) prop).getCor();
         		if( vendedor.temMonopolio(cor) ) {
         			vendedor.removerMonopolio(cor);
-        			System.out.printf("[%s] Você perdeu o monopólio dos lotes da cor %s!\n", vendedor, cor);
+        			System.out.printf( "[%s] Você perdeu o monopólio dos lotes da cor %s\n", vendedor, cor );
         		}
         	}
         	
         	System.out.println();
-        	System.out.printf( "[%s] Você comprou a propriedade com sucesso!\n", comprador );
+        	System.out.printf( "[%s] Você comprou a propriedade com sucesso! (saldo atualizado: $%d)\n", comprador, comprador.getSaldo() );
         	
         	if(prop instanceof Lote) {
         		CorDeLote cor = ((Lote) prop).getCor();
         		if( validarMonopolio(cor) ) {
             		comprador.adicionarMonopolio(cor);
-                    System.out.printf("[%s] Você conquistou o monopólio dos lotes da cor %s!\n", comprador, cor);
+                    System.out.printf( "[%s] Você conquistou o monopólio dos lotes da cor %s!\n", comprador, cor );
         		}
         	}
         	
         	return true;
         }
         else {
-        	System.out.printf( "[%s] Sua oferta foi recusada!\n", comprador );
+        	System.out.printf( "[%s] Sua oferta foi recusada\n", comprador );
         	return false;
         }
     }
@@ -704,10 +704,10 @@ public class Jogo {
                 if(opcao > 0 && opcao <= qtOpcoes)
                     break;
                 else
-                    System.out.print( "Opção errada, insira novamente!\n" );
+                    System.out.print( "Opção errada!\n" );
             }
             catch(NumberFormatException e){
-                System.out.print( "Insira um número inteiro!\n" );
+                System.out.print( "A entrada precisa ser um número inteiro!\n" );
             }
             System.out.println();
         }
@@ -814,7 +814,7 @@ public class Jogo {
     
     
     private void declararFalencia() {
-    	System.out.print("Você faliu!\n");
+    	System.out.print( "Você faliu!\n" );
 		jogadoresRestantes.remove(jogadorDaVez);
     }
     
