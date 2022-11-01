@@ -384,7 +384,7 @@ public class Jogo {
         		System.out.println();
         	}
             
-            System.out.printf( "Você avançou para %s\n", carta.getDestino() );
+            System.out.printf( "Você avançou para %s\n", jogadorDaVez );
             
         	interagirDeNovo = true;
         }
