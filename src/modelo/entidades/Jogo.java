@@ -599,7 +599,7 @@ public class Jogo {
         	System.out.println();
             
             while(true) {
-            	String comando = "Deseja fazer uma oferta sobre a propriedade?\n";
+            	String comando = String.format("[%s] Deseja fazer uma oferta sobre a propriedade?\n", jogadorDaVez);
             	comando += "[1] Sim\n";
             	comando += "[2] Não";
             	int opcao = lerOpcao(comando, 2);
