@@ -385,7 +385,7 @@ public class Jogo {
         		System.out.println();
         	}
             
-            System.out.printf( "Você avançou para %s\n", jogadorDaVez );
+            System.out.printf( "Você avançou para %s\n", jogadorDaVez.getPosicao() );
             
         	interagirDeNovo = true;
         }
@@ -697,17 +697,21 @@ public class Jogo {
         int opcao;
 
         while(true) {
-        	System.out.println( comando );
-            System.out.print( "Opção: " );
-
             try {
+            	System.out.println( comando );
+                System.out.print( "Opção: " );
             	opcao = Integer.parseInt( scanner.nextLine() );
-                if(opcao > 0 && opcao <= qtOpcoes)
-                    break;
-                else
-                    System.out.print( "Opção errada!\n" );
+            	
+                if(opcao > 0 && opcao <= qtOpcoes) {
+                	break;
+                }
+                else {
+                	System.out.println();
+                	System.out.print( "Opção errada!\n" );
+                }
             }
             catch(NumberFormatException e){
+            	System.out.println();
                 System.out.print( "A entrada precisa ser um número inteiro!\n" );
             }
             System.out.println();
