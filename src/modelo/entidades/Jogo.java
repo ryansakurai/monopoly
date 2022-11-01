@@ -132,8 +132,6 @@ public class Jogo {
                 }
             }
             
-            System.out.println();
-            
             /* jogador ganhou */
             if( !jogadorDaVez.faliu() && validarVitoria() ) {
             	System.out.println();
