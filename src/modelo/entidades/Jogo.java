@@ -310,7 +310,7 @@ public class Jogo {
     		banco.receber(jogadorDaVez, 50);
     		
             if( !jogadorDaVez.faliu() ) {
-                System.out.print( "Você pagou a fiança com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
+                System.out.printf( "Você pagou a fiança com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
                 jogadorDaVez.soltar();
                 return true;
             }
@@ -471,7 +471,7 @@ public class Jogo {
     	banco.receber( jogadorDaVez, posicao.getValor() );
     	
         if ( !jogadorDaVez.faliu() ) {
-        	System.out.print( "Você pagou a taxa de riqueza com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
+        	System.out.printf( "Você pagou a taxa de riqueza com sucesso (saldo atualizado: $%d)\n", jogadorDaVez.getSaldo() );
         }
         else {
         	System.out.print( "Você não pôde pagar a taxa de riqueza\n" );
