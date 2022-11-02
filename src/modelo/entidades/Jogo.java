@@ -144,7 +144,6 @@ public class Jogo {
             
             /* jogador ganhou */
             if( !jogadorDaVez.faliu() && validarVitoria() ) {
-            	System.out.println();
             	System.out.print( "Você venceu, parabéns!!!\n" );
             	return;
             }
@@ -512,7 +511,7 @@ public class Jogo {
                     	if( validarMonopolio(cor) ) {
                     		jogadorDaVez.adicionarMonopolio(cor);
                     		System.out.println();
-                            System.out.printf( "Você conquistou o monopólio dos lotes da cor %s!\n", cor );
+                            System.out.printf( "Você conquistou o monopólio dos lotes da cor: %s!\n", cor );
                     	}
                     }
                 } 
@@ -668,7 +667,7 @@ public class Jogo {
         		CorDeLote cor = ((Lote) prop).getCor();
         		if( vendedor.temMonopolio(cor) ) {
         			vendedor.removerMonopolio(cor);
-        			System.out.printf( "[%s] Você perdeu o monopólio dos lotes da cor %s\n", vendedor, cor );
+        			System.out.printf( "[%s] Você perdeu o monopólio dos lotes da cor: %s\n", vendedor, cor );
         		}
         	}
         	
@@ -679,7 +678,7 @@ public class Jogo {
         		CorDeLote cor = ((Lote) prop).getCor();
         		if( validarMonopolio(cor) ) {
             		comprador.adicionarMonopolio(cor);
-                    System.out.printf( "[%s] Você conquistou o monopólio dos lotes da cor %s!\n", comprador, cor );
+                    System.out.printf( "[%s] Você conquistou o monopólio dos lotes da cor: %s!\n", comprador, cor );
         		}
         	}
         	
