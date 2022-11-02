@@ -90,9 +90,10 @@ public class Jogo {
                 /* deu dupla */
                 if (resultado1 == resultado2) {
                     if(jogadorDaVez.deuTresDuplas()) {
-                    	System.out.print( "Você tirou três duplas seguidas e foi preso\n" );
                         jogadorDaVez.prender();
                         tabuleiro.avancarPara(jogadorDaVez, NomeDeEspaco.CADEIA);
+                        System.out.print( "Você tirou três duplas seguidas e foi preso\n" );
+                        System.out.println();
                     }
                     else {
                         System.out.print( "Você tirou uma dupla e jogará de novo na próxima rodada!\n" );
@@ -132,7 +133,7 @@ public class Jogo {
                         	interagirComPropriedade(resultado1+resultado2);
                         }
                         else {
-                        	break;
+                        	System.out.print( "Nada acontece neste espaço\n" );
                         }
                         
                         System.out.println();
@@ -621,6 +622,9 @@ public class Jogo {
         			break;
         		}
             }
+        }
+        else {
+        	System.out.print( "Esta propriedade é sua\n" );
         }
     }
     
