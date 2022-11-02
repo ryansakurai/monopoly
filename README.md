@@ -60,3 +60,5 @@ O jogador é declarado o vencedor caso:
 - [Marcelo Pirro](https://github.com/marcelopirro)
 - [Ryan Sakurai](https://github.com/ryansakurai)
 - [Vinicius Castro](https://github.com/vinciuscastro)
+
+(Estudantes de Ciência da Computação na UFSCAR)
