@@ -61,4 +61,4 @@ O jogador é declarado o vencedor caso:
 - [Ryan Sakurai](https://github.com/ryansakurai)
 - [Vinicius Castro](https://github.com/vinciuscastro)
 
-(Estudantes de Ciência da Computação na UFSCAR)
+(Estudantes de Ciência da Computação na UFSCar)
