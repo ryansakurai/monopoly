@@ -524,7 +524,7 @@ public class Jogo {
     		Lote lote = (Lote) posicao;
     		
     		if( !( lote.temCasa() || lote.temHotel() ) ) {
-    			String comando = "Construção de casa disponível no lote, deseja construir?\n";
+    			String comando = String.format( "Construção de casa disponível no lote ($%d), deseja construir?\n", lote.getPrecoDeConstrucao() );
             	comando += "[1] Sim\n";
                 comando += "[2] Não";
                 int op = lerOpcao(comando, 2);
@@ -548,7 +548,7 @@ public class Jogo {
     					todosTemCasa = false;
     			
     			if(todosTemCasa) {
-    				String comando = "Construção de hotel disponível no lote, deseja construir?\n";
+    				String comando = String.format( "Construção de hotel disponível no lote ($%d), deseja construir?\n", lote.getPrecoDeConstrucao() );
                 	comando += "[1] Sim\n";
                     comando += "[2] Não";
                     int op = lerOpcao(comando, 2);
