@@ -19,11 +19,11 @@ public abstract class Propriedade extends Espaco {
 
     public Propriedade(NomeDeEspaco nome, int preco) {
         super(nome);
-        
-        if(preco >= 0)
-        	this.preco = preco;
-        else
-        	throw new IllegalArgumentException("Preços não podem ser negativos!");
+
+        if(preco < 0)
+            throw new IllegalArgumentException("Preços negativo!");
+
+        this.preco = preco;
     }
 
     public int getPreco() {

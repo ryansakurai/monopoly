@@ -198,8 +198,8 @@ public class Tabuleiro {
      *  @return Se o jogador deu uma volta no tabuleiro
      */
     public boolean avancar(Jogador j, int qt) {
-    	if(qt < 0)
-    		throw new IllegalArgumentException("Um jogador não pode avançar uma quantidade negativa de casas!");
+    	if(qt <= 0)
+    		throw new IllegalArgumentException("Quantidade menor ou igual a 0");
     	
     	if(j.getPosicao() == null)
     		j.setPosicao( getEspaco(NomeDeEspaco.PONTO_PARTIDA) );
@@ -230,8 +230,8 @@ public class Tabuleiro {
      *  @param qt - quantidade de casas a serem voltadas
      */
     public void voltar(Jogador j, int qt) {
-    	if(qt < 0)
-    		throw new IllegalArgumentException("Um jogador não pode voltar uma quantidade negativa de casas!");
+    	if(qt <= 0)
+    		throw new IllegalArgumentException("Quantidade menor ou igual a 0");
     	
     	if(j.getPosicao() == null)
     		j.setPosicao( getEspaco(NomeDeEspaco.PONTO_PARTIDA) );

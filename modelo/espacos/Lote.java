@@ -29,17 +29,14 @@ public class Lote extends Propriedade {
      */
     public Lote(NomeDeEspaco nome, int preco, CorDeLote cor, int precoDeConstrucao, int aluguelSemConstrucao, int aluguelComConstrucao) {
         super(nome, preco);
+
+        if(precoDeConstrucao < 0 || aluguelSemConstrucao < 0 || aluguelComConstrucao < 0)
+            throw new IllegalArgumentException("Preço negativo");
         
         this.cor = cor;
-        
-        if(precoDeConstrucao >= 0 && aluguelSemConstrucao >=0 && aluguelComConstrucao >= 0) {
-        	this.precoDeConstrucao = precoDeConstrucao;
-            this.aluguelSemConstrucao = aluguelSemConstrucao;
-            this.aluguelComConstrucao = aluguelComConstrucao;
-        }
-        else {
-        	throw new IllegalArgumentException("Preços não podem ser negativos!");
-        }
+        this.precoDeConstrucao = precoDeConstrucao;
+        this.aluguelSemConstrucao = aluguelSemConstrucao;
+        this.aluguelComConstrucao = aluguelComConstrucao;
     }
 
     public CorDeLote getCor() {

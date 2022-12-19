@@ -26,10 +26,10 @@ public class Jogo {
      * 	@param scanner - scanner a ser usado na interação com o usuário
      */
     public Jogo(String[] jogadores, Scanner scanner) {
-    	if(jogadores.length >= 2)
-    		this.jogadores = jogadores;
-    	else
-        	throw new IllegalArgumentException("O jogo precisa ter pelo menos 2 jogadores!");
+        if(jogadores.length < 2)
+            throw new IllegalArgumentException("Menos de 2 jogadores");
+
+        this.jogadores = jogadores;
     	this.scanner = scanner;
     }
     

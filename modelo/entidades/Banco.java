@@ -18,18 +18,18 @@ public class Banco {
 	 * 	Dá dinheiro a um jogador
 	 */
 	public void pagar(Jogador j, int valor) {
-		if(valor < 0)
-			throw new IllegalArgumentException("Não é possível pagar um valor negativo!");
-		
-		j.aumentarSaldo(valor);
+		if(valor <= 0)
+			throw new IllegalArgumentException("Valor menor ou igual a 0");
+			
+		j.aumentarSaldo(valor);	
 	}
 	
 	/**
 	 * 	Tira dinheiro de um jogador e retira sua fortuna em caso de falência
 	 */
 	public void receber(Jogador j, int valor) {
-		if(valor < 0)
-			throw new IllegalArgumentException("Não é possível receber um valor negativo!");
+		if(valor <= 0)
+			throw new IllegalArgumentException("Valor menor ou igual a 0");
 		
 		if(j.getSaldo() >= valor) {
 			j.diminuirSaldo(valor);
@@ -60,8 +60,8 @@ public class Banco {
 	 * 	@param valor
 	 */
 	public void transferir(Jogador destino, Jogador origem, int valor) {
-		if(valor < 0)
-			throw new IllegalArgumentException("Não é possível transferir um valor negativo!");
+		if(valor <= 0)
+			throw new IllegalArgumentException("Valor menor ou igual a 0");
 		
 		if(origem.getSaldo() >= valor) {
 			origem.diminuirSaldo(valor);
@@ -97,7 +97,7 @@ public class Banco {
 		transferir(vendedor, comprador, oferta);
 		vendedor.removerPropriedade(prop);
 		comprador.adicionarPropriedade(prop);
-    	prop.setDono(comprador);
+		prop.setDono(comprador);
     	
     	if(prop instanceof Lote) {
     		Lote lote = (Lote) prop;

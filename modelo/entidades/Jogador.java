@@ -189,20 +189,20 @@ public class Jogador {
      *  @param qt - quantidade de saldo para aumentar
      */
     public void aumentarSaldo(int qt) {
-    	if(qt >= 0)
-    		this.saldo += qt;
-    	else
-			throw new IllegalArgumentException("Quantidade negativa!");
+        if(qt <= 0)
+            throw new IllegalArgumentException("Quantidade menor ou igual a 0");
+    	
+        this.saldo += qt;
     }
 
     /**
      *  @param qt - quantidade de saldo para diminuir
      */
     public void diminuirSaldo(int qt) {
-    	if(qt >= 0)
-    		this.saldo -= qt;
-    	else
-			throw new IllegalArgumentException("Quantidade negativa!");
+    	if(qt <= 0)
+    		throw new IllegalArgumentException("Quantidade menor ou igual a 0");
+
+        this.saldo -= qt;
     }
 
     public Espaco getPosicao() {

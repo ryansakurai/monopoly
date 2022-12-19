@@ -21,8 +21,11 @@ public class CartaDeDinheiro extends Carta {
      */
     public CartaDeDinheiro(DescricaoDeCarta descricao, int valor) {
         super(descricao);
+
+        if(valor == 0)
+            throw new IllegalArgumentException("Valor igual a 0");
+
         this.valor = valor;
-        	
     }
 
     /**
