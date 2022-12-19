@@ -3,7 +3,7 @@ package modelo.espacos;
 import modelo.enums.NomeDeEspaco;
 
 /**
- *  Representa a Companhia Elétrica e a Companhia de Distribuição de Água
+ *  Representa a Companhia Elétrica e a Companhia de Distribuição de Agua
  *
  * 	@author Caike dos Santos
  * 	@author Guilherme Bortoletto
